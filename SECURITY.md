@@ -1,24 +1,28 @@
 # Security Policy
 
-## Supported Versions
-
-| Version | Supported |
-|---------|-----------|
-| Current | Yes |
-| Older | No |
-
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability, please report it via **GitHub Issues**:
+If you find a security vulnerability, please report it responsibly:
 
-1. Go to [Issues](../../issues)
-2. Create a new issue with the label `security`
-3. Describe the vulnerability (without exposing sensitive details publicly)
+1. **Do NOT open a public issue**
+2. **Use GitHub's [private vulnerability reporting](https://github.com/lukisch/WinStorePackager/security/advisories/new)**
+3. Include: description, steps to reproduce, potential impact
 
-For sensitive issues, you can also use GitHub's **Private Vulnerability Reporting** if enabled.
+### How to Report
 
-## Response Time
+1. Go to: https://github.com/lukisch/WinStorePackager/security/advisories/new
+2. Fill out the form (title, description, severity, affected versions)
+3. Submit privately (not visible to public until disclosed)
 
-- Acknowledgment: within 48 hours
-- Initial assessment: within 7 days
-- Fix (if confirmed): as soon as possible
+We will respond as soon as possible.
+
+## Scope
+
+- MSIX packaging
+- Manifest generation
+- Keyring credentials
+
+## Response
+
+As a solo project, response times may vary. Critical issues will be
+prioritized. Please allow reasonable time before public disclosure.
