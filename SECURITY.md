@@ -1,50 +1,23 @@
-# Sicherheitsrichtlinie / Security Policy
+# Security Policy
 
-## Deutsch
-
-### Unterstuetzte Versionen
-
-| Version | Unterstuetzt |
-|---------|-------------|
-| Aktuelle | Ja |
-| Aeltere | Nein |
-
-### Sicherheitsluecken melden
-
-Wenn Sie eine Sicherheitsluecke entdecken, melden Sie diese bitte **vertraulich**:
-
-- **E-Mail:** lukas@geiger.sh
-- **Betreff:** `[SECURITY] Projektname - Kurzbeschreibung`
-
-**Bitte erstellen Sie KEIN oeffentliches Issue fuer Sicherheitsluecken.**
-
-### Antwortzeit
-
-- Bestaetigung: innerhalb von 48 Stunden
-- Erste Einschaetzung: innerhalb von 7 Tagen
-- Fix (wenn bestaetigt): so schnell wie moeglich
-
----
-
-## English
-
-### Supported Versions
+## Supported Versions
 
 | Version | Supported |
 |---------|-----------|
 | Current | Yes |
 | Older | No |
 
-### Reporting a Vulnerability
+## Reporting a Vulnerability
 
-If you discover a security vulnerability, please report it **confidentially**:
+If you discover a security vulnerability, please report it via **GitHub Issues**:
 
-- **Email:** lukas@geiger.sh
-- **Subject:** `[SECURITY] ProjectName - Brief Description`
+1. Go to [Issues](../../issues)
+2. Create a new issue with the label `security`
+3. Describe the vulnerability (without exposing sensitive details publicly)
 
-**Please do NOT create a public issue for security vulnerabilities.**
+For sensitive issues, you can also use GitHub's **Private Vulnerability Reporting** if enabled.
 
-### Response Time
+## Response Time
 
 - Acknowledgment: within 48 hours
 - Initial assessment: within 7 days
