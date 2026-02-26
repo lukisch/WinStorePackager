@@ -61,6 +61,12 @@ Thumbs.db
 .DS_Store
 ehthumbs.db
 
+# ---- Standard-Patterns ----
+PLAN.txt
+_archive/
+_private/
+*.log
+
 # ---- Projektspezifisch ----
 settings_store_packager.json
 store_package/
