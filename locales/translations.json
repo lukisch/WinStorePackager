@@ -1,0 +1,54 @@
+{
+  "Ausgabeordner öffnen": {
+    "de": "Ausgabeordner öffnen",
+    "en": "Open Output Folder"
+  },
+  "Build-Einstellungen": {
+    "de": "Build-Einstellungen",
+    "en": "Build Settings"
+  },
+  "Datei +": {
+    "de": "Datei +",
+    "en": "File +"
+  },
+  "Datei laden": {
+    "de": "Datei laden",
+    "en": "Load File"
+  },
+  "Einstellungen speichern": {
+    "de": "Einstellungen speichern",
+    "en": "Save Settings"
+  },
+  "Lizenz (Text/Dateien):": {
+    "de": "Lizenz (Text/Dateien):",
+    "en": "License (Text/Files):"
+  },
+  "Python Umgebung (für Builds)": {
+    "de": "Python Umgebung (für Builds)",
+    "en": "Python Environment (for Builds)"
+  },
+  "README (Text oder Datei):": {
+    "de": "README (Text oder Datei):",
+    "en": "README (Text or File):"
+  },
+  "WACK-Test starten": {
+    "de": "WACK-Test starten",
+    "en": "Run WACK Test"
+  },
+  "Wichtig, wenn dieses Tool als EXE läuft. Muss 'pip install pyinstaller' haben.": {
+    "de": "Wichtig, wenn dieses Tool als EXE läuft. Muss 'pip install pyinstaller' haben.",
+    "en": "Important when this tool runs as EXE. Must have 'pip install pyinstaller'."
+  },
+  "Wählen": {
+    "de": "Wählen",
+    "en": "Select"
+  },
+  "Zeigt erstellte Dateien": {
+    "de": "Zeigt erstellte Dateien",
+    "en": "Shows created files"
+  },
+  "Zusätzliche Aktionen": {
+    "de": "Zusätzliche Aktionen",
+    "en": "Additional Actions"
+  }
+}

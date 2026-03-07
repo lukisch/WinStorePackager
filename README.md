@@ -101,3 +101,29 @@ Die Publisher-ID findest du im [Microsoft Partner Center](https://partner.micros
 ## Lizenz
 
 Dieses Projekt steht unter der [MIT License](LICENSE).
+
+---
+
+## English
+
+A GUI tool for preparing Python applications for the Microsoft Store (MSIX packaging).
+
+### Features
+
+- MSIX package creation
+- App manifest generation
+- Icon and asset management
+- Store submission preparation
+
+### Installation
+
+```bash
+git clone https://github.com/lukisch/REL-PUB_WinStorePackager.git
+cd REL-PUB_WinStorePackager
+pip install -r requirements.txt
+python "WindowsStorePublisher_3.py"
+```
+
+### License
+
+See [LICENSE](LICENSE) for details.
