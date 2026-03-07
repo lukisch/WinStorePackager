@@ -8,32 +8,32 @@
 
 <h1 align="center">WinStorePackager</h1>
 
-<h4 align="center">GUI-Tool zur Vorbereitung von Python-Apps fuer den Microsoft Store — Manifest, Icons und MSIX-Paket auf Knopfdruck</h4>
+<h4 align="center">GUI tool for preparing Python apps for the Microsoft Store — manifest, icons, and MSIX package at the click of a button</h4>
 
 ---
 
 ## Features
 
-| Feature | Beschreibung |
+| Feature | Description |
 |---------|-------------|
-| **Manifest-Generator** | Erstellt `AppxManifest.xml` automatisch aus Formulareingaben |
-| **Icon-Generator** | Alle Store-Pflichtgroessen: 44×44, 50×50, 150×150, 310×310, 310×150 (Wide) |
-| **Keyring-Integration** | Sichere Speicherung von Zertifikat-Passwoertern (kein Klartext) |
-| **Screenshot-Assistent** | Erstellt App-Screenshots direkt via `pygetwindow` |
-| **11 Store-Kategorien** | Vordefiniert (Games, Productivity, Developer Tools, ...) |
-| **Altersfreigaben** | 3+ bis 18+ Ratings |
-| **MSIX-Build** | Ruft `makeappx.exe` und `signtool.exe` aus dem Windows SDK auf |
-| **Settings-Persistenz** | Konfiguration wird in JSON gespeichert und beim naechsten Start geladen |
-| **Auto-Install** | Fehlende Abhaengigkeiten werden automatisch nachinstalliert |
+| **Manifest Generator** | Automatically creates `AppxManifest.xml` from form input |
+| **Icon Generator** | All required Store sizes: 44×44, 50×50, 150×150, 310×310, 310×150 (Wide) |
+| **Keyring Integration** | Secure storage of certificate passwords (no plaintext) |
+| **Screenshot Assistant** | Captures app screenshots directly via `pygetwindow` |
+| **11 Store Categories** | Predefined (Games, Productivity, Developer Tools, ...) |
+| **Age Ratings** | 3+ to 18+ ratings |
+| **MSIX Build** | Calls `makeappx.exe` and `signtool.exe` from the Windows SDK |
+| **Settings Persistence** | Configuration is saved in JSON and loaded on next launch |
+| **Auto-Install** | Missing dependencies are installed automatically |
 
 ---
 
-## Voraussetzungen
+## Prerequisites
 
 - Python 3.10+
 - Windows 10/11
-- [Windows SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/) (fuer `makeappx.exe` und `signtool.exe`)
-- Microsoft Store Entwicklerkonto (fuer Submission)
+- [Windows SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk/) (for `makeappx.exe` and `signtool.exe`)
+- Microsoft Store developer account (for submission)
 
 ```bash
 pip install -r requirements.txt
@@ -50,24 +50,24 @@ pip install -r requirements.txt
 python WindowsStorePublisher_3.py
 ```
 
-Oder unter Windows per Doppelklick auf `START.bat`.
+Or on Windows, double-click `START.bat`.
 
 ---
 
-## Erste Schritte
+## Getting Started
 
-1. **Tool starten** — `python WindowsStorePublisher_3.py` oder `START.bat`
-2. **App-Daten eintragen** — Name, Publisher-ID, Version, Pfad zur `.py`-Datei
-3. **Icon auswaehlen** — das Tool generiert automatisch alle Store-Groessen
-4. **Manifest generieren** — `AppxManifest.xml` wird erstellt
-5. **MSIX bauen** — Tool ruft `makeappx.exe` auf und erstellt das Paket
-6. **Signieren** — Zertifikat auswaehlen, Passwort via Keyring sicher eingeben
+1. **Launch the tool** — `python WindowsStorePublisher_3.py` or `START.bat`
+2. **Enter app details** — Name, Publisher ID, version, path to `.py` file
+3. **Select icon** — the tool automatically generates all Store sizes
+4. **Generate manifest** — `AppxManifest.xml` is created
+5. **Build MSIX** — the tool calls `makeappx.exe` and creates the package
+6. **Sign** — select certificate, securely enter password via Keyring
 
 ---
 
-## Konfiguration
+## Configuration
 
-Beim ersten Start wird `settings_store_packager.json` erstellt (im `.gitignore` — enthaelt persoenliche Daten). Vorlage:
+On first launch, `settings_store_packager.json` is created (in `.gitignore` — contains personal data). Template:
 
 ```json
 {
@@ -80,24 +80,28 @@ Beim ersten Start wird `settings_store_packager.json` erstellt (im `.gitignore` 
 }
 ```
 
-Die Publisher-ID findest du im [Microsoft Partner Center](https://partner.microsoft.com/dashboard).
+You can find your Publisher ID in the [Microsoft Partner Center](https://partner.microsoft.com/dashboard).
 
 ---
 
-## Vergleich mit Alternativen
+## Comparison with Alternatives
 
 | Feature | WinStorePackager | MSIX Packaging Tool | Visual Studio | Advanced Installer |
 |---------|:---:|:---:|:---:|:---:|
 | GUI | ✅ | ⚠️ | ✅ | ✅ |
-| Python-Fokus | ✅ | ❌ | ❌ | ❌ |
-| Auto-Icons | ✅ | ❌ | ⚠️ | ✅ |
-| Manifest-Template | ✅ | ❌ | ✅ | ✅ |
-| Kostenlos | ✅ | ✅ | ⚠️ | ❌ |
-| Screenshot-Assistent | ✅ | ❌ | ❌ | ❌ |
-| Keyring-Sicherheit | ✅ | ❌ | ❌ | ❌ |
+| Python Focus | ✅ | ❌ | ❌ | ❌ |
+| Auto Icons | ✅ | ❌ | ⚠️ | ✅ |
+| Manifest Template | ✅ | ❌ | ✅ | ✅ |
+| Free | ✅ | ✅ | ⚠️ | ❌ |
+| Screenshot Assistant | ✅ | ❌ | ❌ | ❌ |
+| Keyring Security | ✅ | ❌ | ❌ | ❌ |
 
 ---
 
-## Lizenz
+## License
 
-Dieses Projekt steht unter der [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Deutsche Version: [README.de.md](README.de.md)
