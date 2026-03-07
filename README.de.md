@@ -104,4 +104,4 @@ Dieses Projekt steht unter der [MIT License](LICENSE).
 
 ---
 
-English version: [README.md](README.md)
+🇬🇧 [English version](README.md)
