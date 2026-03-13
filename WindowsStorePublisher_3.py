@@ -67,6 +67,8 @@ import glob
 import re
 import time
 import threading
+import html
+from pathlib import Path
 
 # ------------------------------------------------------------
 # 2. Tkinter Sicherheits-Import
@@ -92,8 +94,8 @@ except ImportError:
 
 # ---------- Configuration ----------
 HAS_KEYRING = True # Jetzt garantiert, da oben installiert
-OUTPUT_ROOT = "store_package"
-SETTINGS_FILE = "settings_store_packager.json"
+OUTPUT_ROOT = str(Path(__file__).parent / "store_package")
+SETTINGS_FILE = str(Path(__file__).parent / "settings_store_packager.json")
 ICON_SIZES = [44, 50, 150, 310]  # Square sizes
 WIDE_ICON_SIZE = (310, 150)  # Wide tile
 DEFAULT_VERSION = "1.0.0.0"
@@ -307,8 +309,7 @@ class StorePackagerApp(tk.Tk):
 
             except Exception as e:
                 # Fallback für alte Settings-Files oder Keyring-Fehler
-                # print(f"Info: {e}")
-                pass
+                print(f"Warnung: Einstellungen konnten nicht vollständig geladen werden: {e}")
 
     def save_settings(self):
         if self.pfx_password.get():
@@ -972,7 +973,7 @@ def patch_widgets(translator):
 
                 build_env = os.environ.copy()
                 build_env["PYTHONIOENCODING"] = "utf-8"
-                subprocess.check_call(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=startupinfo, env=build_env)
+                subprocess.run(cmd, capture_output=True, check=True, startupinfo=startupinfo, env=build_env)
                 
                 progress.update_status("Aufräumen...")
                 # Cleanup relativ zum Output-Verzeichnis (nicht cwd!)
@@ -1189,8 +1190,8 @@ def patch_widgets(translator):
             self.identity_name.get().strip() or f"YourCompany.{self.app_name.get().strip()}")
         manifest = manifest.replace("{{PUBLISHER}}", 
             self.publisher.get().strip() or "CN=YourPublisher")
-        manifest = manifest.replace("{{APPNAME}}", 
-            self.app_name.get().strip() or "MyApp")
+        manifest = manifest.replace("{{APPNAME}}",
+            html.escape(self.app_name.get().strip() or "MyApp"))
         manifest = manifest.replace("{{PUBLISHER_DISPLAY}}", 
             self.publisher_display.get().strip() or self.publisher.get().strip().replace("CN=", "") or "YourPublisher")
         manifest = manifest.replace("{{DESCRIPTION}}", 
@@ -1227,7 +1228,7 @@ def patch_widgets(translator):
             return
             
         outdir = self.package_dir()
-        
+        proc = None
         try:
             proc = subprocess.Popen([exe_path])
             time.sleep(5)
@@ -1270,10 +1271,11 @@ def patch_widgets(translator):
                 
         except Exception as e:
             messagebox.showerror("Fehler", f"Screenshots fehlgeschlagen:\n{e}")
-            try:
-                proc.terminate()
-            except:
-                pass
+            if proc is not None:
+                try:
+                    proc.terminate()
+                except Exception:
+                    pass
 
     # ---------- WACK ----------
     def run_wack_test(self):
@@ -1362,9 +1364,9 @@ def patch_widgets(translator):
                 img = Image.open(self.icon_path.get())
                 if img.width < 310 or img.height < 310:
                     issues.append(f"⚠️  Icon zu klein ({img.width}x{img.height}), mindestens 310x310 empfohlen")
-            except:
-                pass
-        
+            except Exception as e:
+                issues.append(f"Warnung: Icon konnte nicht gelesen werden: {e}")
+
         if not self.privacy_url.get().strip():
             issues.append("❌ Privacy Policy URL fehlt")
         elif not self.privacy_url.get().startswith(("http://", "https://")):
