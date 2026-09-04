@@ -1822,5 +1822,93 @@
     "zh": "按钮: 退出程序",
     "ja": "ボタン: プログラムを終了",
     "ru": "Кнопка: Выйти из программы"
+  },
+  "Bestätigung": {
+    "de": "Bestätigung",
+    "en": "Confirmation",
+    "es": "Confirmación",
+    "zh": "确认",
+    "ja": "確認",
+    "ru": "Подтверждение"
+  },
+  "Ausgabeordner existiert bereits:": {
+    "de": "Ausgabeordner existiert bereits:",
+    "en": "Output directory already exists:",
+    "es": "El directorio de salida ya existe:",
+    "zh": "输出目录已存在：",
+    "ja": "出力フォルダーはすでに存在します：",
+    "ru": "Каталог вывода уже существует:"
+  },
+  "Überschreiben?": {
+    "de": "Überschreiben?",
+    "en": "Overwrite?",
+    "es": "¿Sobrescribir?",
+    "zh": "覆盖？",
+    "ja": "上書きしますか？",
+    "ru": "Перезаписать?"
+  },
+  "Bitte App-Name eingeben.": {
+    "de": "Bitte App-Name eingeben.",
+    "en": "Please enter an app name.",
+    "es": "Introduzca el nombre de la aplicación.",
+    "zh": "请输入应用名称。",
+    "ja": "アプリ名を入力してください。",
+    "ru": "Введите имя приложения."
+  },
+  "Konnte Lizenzdatei nicht kopieren:": {
+    "de": "Konnte Lizenzdatei nicht kopieren:",
+    "en": "Could not copy license file:",
+    "es": "No se pudo copiar el archivo de licencia:",
+    "zh": "无法复制许可证文件：",
+    "ja": "ライセンスファイルをコピーできませんでした：",
+    "ru": "Не удалось скопировать файл лицензии:"
+  },
+  "Sprachmodul konnte nicht integriert werden:": {
+    "de": "Sprachmodul konnte nicht integriert werden:",
+    "en": "Could not integrate language module:",
+    "es": "No se pudo integrar el módulo de idioma:",
+    "zh": "无法集成语言模块：",
+    "ja": "言語モジュールを統合できませんでした：",
+    "ru": "Не удалось интегрировать языковой модуль:"
+  },
+  "Fertig": {
+    "de": "Fertig",
+    "en": "Done",
+    "es": "Listo",
+    "zh": "完成",
+    "ja": "完了",
+    "ru": "Готово"
+  },
+  "Paket erstellt:": {
+    "de": "Paket erstellt:",
+    "en": "Package created:",
+    "es": "Paquete creado:",
+    "zh": "已创建软件包：",
+    "ja": "パッケージを作成しました：",
+    "ru": "Пакет создан:"
+  },
+  "Drittanbieter-Lizenzen gesammelt:": {
+    "de": "Drittanbieter-Lizenzen gesammelt:",
+    "en": "Third-party licenses collected:",
+    "es": "Licencias de terceros recopiladas:",
+    "zh": "已收集第三方许可证：",
+    "ja": "サードパーティライセンスを収集しました：",
+    "ru": "Собраны сторонние лицензии:"
+  },
+  "Lizenzen-Warnung:": {
+    "de": "Lizenzen-Warnung:",
+    "en": "License warning:",
+    "es": "Advertencia de licencia:",
+    "zh": "许可证警告：",
+    "ja": "ライセンスに関する警告：",
+    "ru": "Предупреждение о лицензиях:"
+  },
+  "Paket-Erstellung fehlgeschlagen:": {
+    "de": "Paket-Erstellung fehlgeschlagen:",
+    "en": "Package creation failed:",
+    "es": "La creación del paquete falló:",
+    "zh": "创建软件包失败：",
+    "ja": "パッケージの作成に失敗しました：",
+    "ru": "Не удалось создать пакет:"
   }
 }

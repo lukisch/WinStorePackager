@@ -1969,13 +1969,15 @@ def patch_widgets(translator):
     def build_package(self):
         appname = self.app_name.get().strip()
         if not appname:
-            messagebox.showerror("Fehler", "Bitte App-Name eingeben.")
+            messagebox.showerror(_t("Fehler"), _t("Bitte App-Name eingeben."))
             return
 
         outdir = self.package_dir()
         if os.path.exists(outdir):
-            if not messagebox.askyesno("Bestätigung",
-                f"Ausgabeordner existiert bereits:\n{outdir}\n\nÜberschreiben?"):
+            if not messagebox.askyesno(
+                _t("Bestätigung"),
+                f"{_t('Ausgabeordner existiert bereits:')}\n{outdir}\n\n{_t('Überschreiben?')}",
+            ):
                 return
             shutil.rmtree(outdir)
         os.makedirs(outdir, exist_ok=True)
@@ -2000,8 +2002,10 @@ def patch_widgets(translator):
                     try:
                         shutil.copy(path, os.path.join(outdir, f"LICENSE_{i}.txt"))
                     except Exception as e:
-                        messagebox.showwarning("Warnung",
-                            f"Konnte Lizenzdatei nicht kopieren:\n{path}\n{e}")
+                        messagebox.showwarning(
+                            _t("Warnung"),
+                            f"{_t('Konnte Lizenzdatei nicht kopieren:')}\n{path}\n{e}",
+                        )
 
             for i, txt in enumerate(self.license_text_entries, 1):
                 self.write_text_file(os.path.join(outdir, f"LICENSE_TEXT_{i}.txt"), txt)
@@ -2026,8 +2030,10 @@ def patch_widgets(translator):
             if self.enable_i18n.get() and staged_script:
                 ok, info = self.integrate_i18n(outdir, script_to_patch=staged_script)
                 if not ok:
-                    messagebox.showwarning("Warnung",
-                        f"Sprachmodul konnte nicht integriert werden:\n{info}")
+                    messagebox.showwarning(
+                        _t("Warnung"),
+                        f"{_t('Sprachmodul konnte nicht integriert werden:')}\n{info}",
+                    )
 
             exe_name = self.exe_name.get().strip()
             if not exe_name:
@@ -2040,16 +2046,19 @@ def patch_widgets(translator):
 
             self.save_settings()
 
-            msg = f"Paket für {appname} wurde erstellt:\n{outdir}"
+            msg = f"{_t('Paket erstellt:')} {appname}\n{outdir}"
             if ok_lic:
-                msg += f"\n\nDrittanbieter-Lizenzen gesammelt:\n{info_lic}"
+                msg += f"\n\n{_t('Drittanbieter-Lizenzen gesammelt:')}\n{info_lic}"
             else:
-                msg += f"\n\nLizenzen-Warnung:\n{info_lic}"
+                msg += f"\n\n{_t('Lizenzen-Warnung:')}\n{info_lic}"
 
-            messagebox.showinfo("Fertig", msg)
+            messagebox.showinfo(_t("Fertig"), msg)
 
         except Exception as e:
-            messagebox.showerror("Fehler", f"Paket-Erstellung fehlgeschlagen:\n{e}")
+            messagebox.showerror(
+                _t("Fehler"),
+                f"{_t('Paket-Erstellung fehlgeschlagen:')}\n{e}",
+            )
 
     # ---------- MSIX Build & Sign ----------
     def build_and_sign_msix(self):

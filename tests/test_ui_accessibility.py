@@ -116,6 +116,41 @@ class TestProjectProfileDialogLocalization(unittest.TestCase):
         )
 
 
+class TestBuildPackageDialogLocalization(unittest.TestCase):
+    def setUp(self):
+        self.translator = _wsp.get_translator()
+        if self.translator is None:
+            self.skipTest("Translation system is unavailable")
+        self.translator.set_language("en")
+
+    def tearDown(self):
+        if self.translator is not None:
+            self.translator.set_language("de")
+
+    def test_build_package_missing_name_uses_selected_language(self):
+        app = SimpleNamespace(app_name=SimpleNamespace(get=lambda: "  "))
+        with patch.object(_wsp.messagebox, "showerror") as show_error:
+            _wsp.StorePackagerApp.build_package(app)
+
+        show_error.assert_called_once_with("Error", "Please enter an app name.")
+
+    def test_existing_output_confirmation_uses_selected_language(self):
+        app = SimpleNamespace(
+            app_name=SimpleNamespace(get=lambda: "Demo"),
+            package_dir=lambda: "C:/temporary/output",
+        )
+        with (
+            patch.object(_wsp.os.path, "exists", return_value=True),
+            patch.object(_wsp.messagebox, "askyesno", return_value=False) as ask_yes_no,
+        ):
+            _wsp.StorePackagerApp.build_package(app)
+
+        ask_yes_no.assert_called_once_with(
+            "Confirmation",
+            "Output directory already exists:\nC:/temporary/output\n\nOverwrite?",
+        )
+
+
 class TestUiAccessibility(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
