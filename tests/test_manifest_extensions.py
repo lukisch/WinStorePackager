@@ -17,6 +17,7 @@ from xml.dom import minidom
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import html
 import WindowsStorePublisher_3 as wsp  # noqa: E402
 
 
@@ -33,7 +34,7 @@ def _render(config, executable="TestApp.exe"):
         ("{{IDENTITY_NAME}}", "Tester.TestApp"), ("{{PUBLISHER}}", "CN=TEST"),
         ("{{APPNAME}}", "TestApp"), ("{{APPID}}", "TestApp"),
         ("{{PUBLISHER_DISPLAY}}", "Tester"), ("{{DESCRIPTION}}", "Beschreibung"),
-        ("{{VERSION}}", "1.0.0.0"), ("{{EXECUTABLE}}", executable),
+        ("{{VERSION}}", "1.0.0.0"), ("{{EXECUTABLE}}", html.escape(executable)),
         ("{{CAPABILITIES}}", '    <rescap:Capability Name="runFullTrust"/>'),
         ("{{RESOURCES}}", '    <Resource Language="de-DE"/>\n'),
     ):
@@ -100,3 +101,35 @@ def test_config_field_names_match_store_packager():
                        if field in ("file_types", "startup_task") else
                        ([{"name": "x"}] if field == "protocols" else "x.exe")})
         minidom.parseString(doc)
+
+
+def test_manifest_extensions_attribute_escaping_and_lowercase_filetypes():
+    """Manifest-Erweiterungen muessen Attribute gegen Anfuehrungszeichen absichern und FileTypes in Kleinbuchstaben fuehren."""
+    config = {
+        "file_types": [
+            {
+                "name": "custom",
+                "display_name": 'Format "Pro" & <Lite>',
+                "extensions": [".MD", "TXT"],
+                "logo": 'icons\\logo "dark".png',
+                "info_tip": 'Info "Tip"',
+                "migration_progids": ['ProgId "Old"'],
+            }
+        ],
+        "execution_alias": ['app "cli"'],
+        "protocols": [{"name": "myproto", "display_name": 'Proto "Link"', "logo": 'proto "icon".png'}],
+        "startup_task": {
+            "task_id": "Task1",
+            "enabled": True,
+            "display_name": 'AutoStart "App" & Service',
+            "executable": 'app "run".exe',
+        },
+    }
+    doc = _render(config, executable='app "run".exe')
+    parsed = minidom.parseString(doc)
+    file_types = [node.firstChild.nodeValue for node in parsed.getElementsByTagName("uap:FileType")]
+    assert ".md" in file_types
+    assert ".txt" in file_types
+    startup_tasks = parsed.getElementsByTagName("desktop:StartupTask")
+    assert len(startup_tasks) == 1
+    assert startup_tasks[0].getAttribute("DisplayName") == 'AutoStart "App" & Service'

@@ -19,6 +19,11 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ### Behoben / Fixed (2026-09-09)
 
+- **XML-Attribut-Escaping in Manifest-Erweiterungen (`WindowsStorePublisher_3.py`):**
+  - XML-Attribute in `build_manifest_extensions` (`DisplayName`, `Logo`, `InfoTip`, `MigrationProgId`, `FileType`, `FileTypeAssociation Name`, `Executable`, `Alias`, `Protocol Name`, `StartupTask TaskId`, `StartupTask DisplayName`) werden nun XML-attributkonform gegen Anführungszeichen maskiert (`&quot;`, `&apos;`), wodurch Anführungszeichen in App-/Task-/Protokollnamen nicht mehr zu `ExpatError`/`not well-formed` Parse-Abbrüchen in `AppxManifest.xml` führen.
+  - `min_version` und `max_version_tested` in `generate_manifest` gegen XML-Sonderzeichen abgesichert.
+  - Dateierweiterungen in `uap:FileType` werden automatisch nach Kleinbuchstaben normalisiert, um Konformität mit dem Windows Store AppX Schema-Pattern `ST_FileType` (`\.([a-z0-9]+)`) sicherzustellen.
+  - Vollständiger Regressionstest in `tests/test_manifest_extensions.py` verankert.
 - **WACK XML-Report Parsing Gesamtergebnis- & Fehlerstatus-Behandlung (Bugsweep 2026-09-09):**
   - `WindowsStorePublisher_3.py`: In `parse_wack_report()` führte die Evaluierungsbedingung `(overall == "PASS") or (len(failed_tests) == 0 and len(passed_tests) > 0)` dazu, dass Reports mit `OVERALL_RESULT="FAIL"` oder `"ERROR"` fälschlicherweise als bestanden bewertet wurden, wenn keine einzelnen `<TEST RESULT="FAIL">`-Elemente vorlagen. Die Bedingung prüft `OVERALL_RESULT` nun strikt auf `FAIL`/`FAILED`/`ERROR`/`CRASH` und weist diese ab.
   - Erkennung fehlerhafter Tests auf alternative Stati erweitert (`RESULT="FAILED"`, `RESULT="ERROR"`, `RESULT="CRASH"`), sodass nicht-abgeschlossene oder abgestürzte WACK-Prüfungen zuverlässig als `failed_tests` erfasst werden.

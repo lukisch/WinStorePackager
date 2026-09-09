@@ -279,7 +279,10 @@ def build_manifest_extensions(config, executable):
 
     Rueckgabe: (xml, set der benoetigten Namensraum-Praefixe)
     """
-    from xml.sax.saxutils import escape as _esc
+    from xml.sax.saxutils import escape as _sax_escape
+
+    def _esc(val):
+        return _sax_escape(str(val), {'"': "&quot;", "'": "&apos;"})
 
     parts = []
     ns = set()
@@ -310,7 +313,7 @@ def build_manifest_extensions(config, executable):
             body.append("            </rescap3:MigrationProgIds>")
         body.append("            <uap:SupportedFileTypes>")
         for e in exts:
-            e = str(e).strip()
+            e = str(e).strip().lower()
             if not e.startswith("."):
                 e = "." + e
             body.append("              <uap:FileType>%s</uap:FileType>" % _esc(e))
@@ -2271,9 +2274,9 @@ def patch_widgets(translator):
         manifest = manifest.replace("{{NAMESPACES}}", ns_attr)
         manifest = manifest.replace("{{IGNORABLE}}", ignorable)
         manifest = manifest.replace("{{MINVERSION}}",
-            str(project_config.get("min_version") or DEFAULT_MIN_VERSION))
+            html.escape(str(project_config.get("min_version") or DEFAULT_MIN_VERSION)))
         manifest = manifest.replace("{{MAXVERSION}}",
-            str(project_config.get("max_version_tested") or DEFAULT_MAX_VERSION_TESTED))
+            html.escape(str(project_config.get("max_version_tested") or DEFAULT_MAX_VERSION_TESTED)))
 
         with open(os.path.join(outdir, "AppxManifest.xml"), "w", encoding="utf-8") as f:
             f.write(manifest)
