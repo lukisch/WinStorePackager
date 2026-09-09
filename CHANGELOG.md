@@ -17,6 +17,14 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Behoben / Fixed (2026-09-09)
+
+- **WACK XML-Report Parsing Gesamtergebnis- & Fehlerstatus-Behandlung (Bugsweep 2026-09-09):**
+  - `WindowsStorePublisher_3.py`: In `parse_wack_report()` führte die Evaluierungsbedingung `(overall == "PASS") or (len(failed_tests) == 0 and len(passed_tests) > 0)` dazu, dass Reports mit `OVERALL_RESULT="FAIL"` oder `"ERROR"` fälschlicherweise als bestanden bewertet wurden, wenn keine einzelnen `<TEST RESULT="FAIL">`-Elemente vorlagen. Die Bedingung prüft `OVERALL_RESULT` nun strikt auf `FAIL`/`FAILED`/`ERROR`/`CRASH` und weist diese ab.
+  - Erkennung fehlerhafter Tests auf alternative Stati erweitert (`RESULT="FAILED"`, `RESULT="ERROR"`, `RESULT="CRASH"`), sodass nicht-abgeschlossene oder abgestürzte WACK-Prüfungen zuverlässig als `failed_tests` erfasst werden.
+  - Fehlermeldung bei Gesamtergebnissen ohne einzelne Testfehlschläge formatiert nun das Gesamtergebnis lesbar (`Gesamtergebnis: FAIL`) statt `0 Fehler: `.
+  - Neue Regressionstests in `tests/test_bugsweep_20260909.py` sowie Erweiterung von `tests/test_wack_and_signing.py`.
+
 ### Technische Hygiene & CI-Härtung (Pfad A, 2026-09-09)
 
 - **GitHub Actions CI-Härtung (`.github/workflows/ci.yml`):**

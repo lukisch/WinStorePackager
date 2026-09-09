@@ -459,12 +459,17 @@ def parse_wack_report(report_path: str):
         for test in root.iter("TEST"):
             name = test.attrib.get("NAME", "Unknown")
             result = test.attrib.get("RESULT", "").upper()
-            if result == "FAIL":
+            if result in ("FAIL", "FAILED", "ERROR", "CRASH"):
                 failed_tests.append(name)
-            elif result == "PASS":
+            elif result in ("PASS", "PASSED"):
                 passed_tests.append(name)
 
-        passed = (overall == "PASS") or (len(failed_tests) == 0 and len(passed_tests) > 0)
+        if overall in ("FAIL", "FAILED", "ERROR", "CRASH"):
+            passed = False
+        elif overall in ("PASS", "PASSED"):
+            passed = (len(failed_tests) == 0)
+        else:
+            passed = (len(failed_tests) == 0 and len(passed_tests) > 0)
 
         details = {
             "overall": overall,
@@ -477,11 +482,15 @@ def parse_wack_report(report_path: str):
         if passed:
             msg = f"✅ WACK-Test BESTANDEN ({len(passed_tests)} Prüfungen ok)."
         else:
-            msg = f"❌ WACK-Test FEHLGESCHLAGEN ({len(failed_tests)} Fehler: {', '.join(failed_tests[:5])})."
+            if failed_tests:
+                msg = f"❌ WACK-Test FEHLGESCHLAGEN ({len(failed_tests)} Fehler: {', '.join(failed_tests[:5])})."
+            else:
+                msg = f"❌ WACK-Test FEHLGESCHLAGEN (Gesamtergebnis: {overall or 'FAIL'})."
 
         return passed, msg, details
     except Exception as e:
         return False, f"Fehler beim Parsen des WACK-Reports: {e}", {}
+
 
 class ProgressDialog(tk.Toplevel):
     """Modal progress dialog for long operations - Thread Safe Fix Applied"""
