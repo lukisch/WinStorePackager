@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Test (Python ${{ matrix.python-version }} on ${{ matrix.os }})
@@ -17,7 +21,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v4
@@ -37,8 +41,12 @@ jobs:
         run: |
           ruff check .
 
+      - name: Validate Python Bytecode Compilation
+        run: |
+          python -m compileall -q .
+
       - name: Run Pytest Test Suite
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: |
-          pytest
+          pytest -v

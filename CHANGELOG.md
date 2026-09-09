@@ -17,6 +17,30 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Technische Hygiene & CI-Härtung (Pfad A, 2026-09-09)
+
+- **GitHub Actions CI-Härtung (`.github/workflows/ci.yml`):**
+  - Concurrency-Gruppe `${{ github.workflow }}-${{ github.ref }}` mit `cancel-in-progress: true` zur Vermeidung redundanter Matrix-Builds.
+  - Python-Matrix um Python 3.13 erweitert (`["3.9", "3.10", "3.11", "3.12", "3.13"]`).
+  - Bytecode-Validierungsgate `python -m compileall -q .` vor den Testläufen verankert.
+  - Testausführung auf `pytest -v` standardisiert.
+- **PEP 621 Standard-Metadaten (`pyproject.toml`):**
+  - Classifiers um `Operating System :: OS Independent` und `Programming Language :: Python :: 3.13` ergänzt.
+  - Standardisierte URLs `Parent Organization` (`https://github.com/file-bricks`) und `Umbrella Ecosystem` (`https://github.com/open-bricks`) eingetragen.
+  - `[tool.pytest.ini_options]` um `addopts = "-v"` erweitert.
+- **`.gitignore`-Härtung:**
+  - Ausschlussmuster für Multi-Host-Synchronisationskonflikte (`*.sync-conflict-*`, `*.conflict`, `*-CONFLIT-*`, `*-conflict-*`) ergänzt.
+  - Ausschlussmuster für Multi-Agent Locks (`LOCK.*`, `*.lock`, `LOCK*.txt`) verankert.
+  - Packaging- und Smoke-Artefakte (`wheelhouse/`, `.wheel-smoke/`) sowie Backup-Dateien (`*.bak`) ignoriert.
+- **Sicherheitsrichtlinie (`SECURITY.md`):**
+  - Dachorganisations-Sicherheitskontakt `security@open-bricks.org` in deutschen und englischen Meldewegen ergänzt.
+  - Verbindliche Service-Level-Agreements verankert: 48h Eingangsbestätigung (Acknowledgment SLA) und 5 Werktage Triage-Zusage.
+- **Dokumentations- & Discoverability-Parität (`README.md`, `README_de.md`, `llms.txt`):**
+  - Shields.io Badges aktualisiert: 125 bestandene Tests (4 übersprungen), Python 3.9–3.13, 48h Sicherheits-SLA und Code Style Ruff.
+  - Maschinenlesbarer LLM-Kontext in `llms.txt` auf Stand 2026-09-09 synchronisiert.
+- **Automatisierte Vertragstestsuite (`tests/test_metadata.py`):**
+  - Testsuite erweitert um `test_ci_workflow_integrity` (Concurrency, Python 3.13, Bytecode Gate), `test_gitignore_hardening` (Konflikte, Locks, Smoke-Artefakte), erweiterte PEP 621 Metadaten und zweisprachige Security SLAs (129 Tests gesamt: 125 passed, 4 skipped, 100% grün).
+
 ### Sicherheit / Security (2026-08-31)
 
 - **Strikter Projektprofilvertrag:** Import und Export von

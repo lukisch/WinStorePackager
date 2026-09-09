@@ -51,7 +51,7 @@ def test_visual_showcase_screenshots_exist() -> None:
 
 
 def test_security_policy_bilingual_integrity() -> None:
-    """Verify SECURITY.md contains English and German sections, local-first guarantees, and contact emails."""
+    """Verify SECURITY.md contains English and German sections, local-first guarantees, SLAs, and contact emails."""
     security_file = ROOT / "SECURITY.md"
     assert security_file.is_file(), "SECURITY.md must exist"
     content = security_file.read_text(encoding="utf-8")
@@ -60,8 +60,11 @@ def test_security_policy_bilingual_integrity() -> None:
     assert "## English" in content, "English section missing in SECURITY.md"
     assert "Zero-Egress" in content or "Local-First" in content, "Local-first guarantee missing in SECURITY.md"
     assert "Keyring" in content or "keyring" in content, "Keyring credential security missing in SECURITY.md"
+    assert "security@open-bricks.org" in content, "Umbrella security contact email missing in SECURITY.md"
     assert "security@file-bricks.org" in content, "Security contact email missing in SECURITY.md"
     assert "security/advisories/new" in content, "Vulnerability reporting instructions missing"
+    assert "48" in content, "48h response SLA missing in SECURITY.md"
+    assert "5" in content, "5-day triage commitment missing in SECURITY.md"
 
 
 def test_llms_txt_integrity() -> None:
@@ -70,7 +73,7 @@ def test_llms_txt_integrity() -> None:
     assert llms_file.is_file(), "llms.txt must exist"
     content = llms_file.read_text(encoding="utf-8")
 
-    assert "Last-checked: 2026-08-26" in content, "llms.txt timestamp not updated"
+    assert "Last-checked: 2026-09-09" in content, "llms.txt timestamp not updated to 2026-09-09"
     assert "https://github.com/file-bricks/WinStorePackager" in content, "Canonical repo link missing in llms.txt"
     assert "MSIX" in content and "AppxManifest" in content, "Packaging keywords missing in llms.txt"
     assert "SECURITY.md" in content, "SECURITY.md reference missing in llms.txt"
@@ -103,18 +106,42 @@ def test_pyproject_pep621_metadata() -> None:
     assert "Documentation =" in content, "Documentation URL missing in pyproject.toml"
     assert "Changelog =" in content, "Changelog URL missing in pyproject.toml"
     assert "Umbrella =" in content, "Umbrella URL missing in pyproject.toml"
+    assert '"Parent Organization"' in content, "Parent Organization URL missing in pyproject.toml"
+    assert '"Umbrella Ecosystem"' in content, "Umbrella Ecosystem URL missing in pyproject.toml"
     assert "Operating System :: Microsoft :: Windows" in content
+    assert "Operating System :: OS Independent" in content, "OS Independent classifier missing"
+    assert "Programming Language :: Python :: 3.13" in content, "Python 3.13 classifier missing"
+    assert 'addopts = "-v"' in content, "pytest addopts missing in pyproject.toml"
 
 
 def test_ci_workflow_integrity() -> None:
-    """Verify GitHub Actions CI workflows exist and have multi-OS matrix."""
+    """Verify GitHub Actions CI workflows exist, have multi-OS matrix, concurrency, and compileall gate."""
     workflow_dir = ROOT / ".github" / "workflows"
     assert (workflow_dir / "ci.yml").is_file(), "ci.yml missing"
 
     ci_yml = (workflow_dir / "ci.yml").read_text(encoding="utf-8")
     assert "ubuntu-latest" in ci_yml and "windows-latest" in ci_yml and "macos-latest" in ci_yml
+    assert "3.13" in ci_yml, "Python 3.13 missing from CI matrix"
+    assert "concurrency:" in ci_yml, "Concurrency block missing in ci.yml"
+    assert "cancel-in-progress: true" in ci_yml, "cancel-in-progress missing in ci.yml"
+    assert "python -m compileall -q ." in ci_yml, "compileall bytecode gate missing in ci.yml"
     assert "ruff check ." in ci_yml
-    assert "pytest" in ci_yml
+    assert "pytest -v" in ci_yml
+
+
+def test_gitignore_hardening() -> None:
+    """Verify .gitignore contains multi-host sync conflict patterns and multi-agent locks."""
+    gitignore_file = ROOT / ".gitignore"
+    assert gitignore_file.is_file(), ".gitignore must exist"
+    content = gitignore_file.read_text(encoding="utf-8")
+
+    assert "*.sync-conflict-*" in content, "sync-conflict pattern missing in .gitignore"
+    assert "*.conflict" in content, "conflict pattern missing in .gitignore"
+    assert "*-CONFLIT-*" in content, "CONFLIT pattern missing in .gitignore"
+    assert "LOCK.*" in content, "LOCK.* pattern missing in .gitignore"
+    assert "*.lock" in content, "*.lock pattern missing in .gitignore"
+    assert "wheelhouse/" in content, "wheelhouse pattern missing in .gitignore"
+    assert ".wheel-smoke/" in content, ".wheel-smoke pattern missing in .gitignore"
 
 
 if __name__ == "__main__":

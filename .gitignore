@@ -99,3 +99,19 @@ DECISIONS.md
 PORTIERUNGSPLAN.md
 TODO.md
 DONE.md
+
+# ---- Multi-Host-Synchronisation & Konfliktschutz ----
+*.sync-conflict-*
+*.conflict
+*-CONFLIT-*
+*-conflict-*
+
+# ---- Multi-Agent Locks & Lock-System ----
+LOCK.*
+*.lock
+LOCK*.txt
+
+# ---- Packaging & Smoke Tests ----
+wheelhouse/
+.wheel-smoke/
+*.bak

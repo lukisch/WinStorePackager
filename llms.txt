@@ -18,7 +18,7 @@ WinStorePackager is a local-first Windows GUI and CLI utility for preparing Pyth
 - `PRIVACY_POLICY.md`: Local-data and privacy boundary.
 - `STORE_LISTING.md`: Reusable Microsoft Store listing copy.
 - `unix_preflight.py`: Cross-platform preflight validation script (Linux / macOS / CI).
-- `.github/workflows/ci.yml`: Multi-OS CI testing matrix (Ubuntu, Windows, macOS across Python 3.9-3.12).
+- `.github/workflows/ci.yml`: Multi-OS CI testing matrix (Ubuntu, Windows, macOS across Python 3.9-3.13) with concurrency control and bytecode gate.
 - `tests/test_metadata.py`: Automated contract suite for metadata, badges, and discoverability.
 
 ## Audience
@@ -52,12 +52,12 @@ Local Publisher IDs, certificate paths, passwords, SDK paths, generated manifest
 
 ## Verification & Test Suite
 
-Tested with Pytest: 114 collected tests (103 passed, 11 skipped in the current local run); optional local Store, WACK, and Tkinter-display checks may skip when their local artifacts or display are unavailable. Execute via `pytest`.
+Tested with Pytest: 129 collected tests (125 passed, 4 skipped in the current local run; optional local Store, WACK, and display checks may skip when their local artifacts or display are unavailable). Execute via `pytest -v`.
 
-## Last-checked: 2026-08-26
+## Last-checked: 2026-09-09
 
-Verification: the local Pytest suite collected 114 tests, with 103 passed and 11
+Verification: the local Pytest suite collected 129 tests, with 125 passed and 4
 skipped because local Store/MSIX/WACK artifacts are unavailable;
 the codebase is clean, reproducible, and fully passes all contract tests.
 SDK-free Unix preflight found no issues across 12 artifacts;
-`ruff check .` (0 errors) and `python -m compileall .` (0 errors) pass 100% cleanly.
+`ruff check .` (0 errors) and `python -m compileall -q .` (0 errors) pass 100% cleanly.

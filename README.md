@@ -6,13 +6,15 @@
   <img src="https://img.shields.io/badge/Ecosystem-file--bricks-blue?style=for-the-badge" alt="Ecosystem">
   <img src="https://img.shields.io/badge/Umbrella-open--bricks-orange?style=for-the-badge" alt="Umbrella">
   <img src="https://img.shields.io/badge/Version-3.1.0-blue?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/Python-3.9--3.12-yellow?style=for-the-badge" alt="Python">
+  <img src="https://img.shields.io/badge/Python-3.9--3.13-yellow?style=for-the-badge" alt="Python">
   <img src="https://img.shields.io/badge/CI-Multi--OS%20Passing-brightgreen?style=for-the-badge&logo=githubactions" alt="CI Status">
-  <img src="https://img.shields.io/badge/Tests-103%20passed%20%7C%2011%20skipped-brightgreen?style=for-the-badge" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-125%20passed%20%7C%204%20skipped-brightgreen?style=for-the-badge" alt="Tests">
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-0078D6?style=for-the-badge" alt="Windows">
+  <img src="https://img.shields.io/badge/Security%20SLA-48h%20SLA-blue?style=for-the-badge" alt="Security SLA">
   <img src="https://img.shields.io/badge/Privacy-100%25%20Local--First%20%7C%20Zero--Egress-purple?style=for-the-badge" alt="Local First">
   <img src="https://img.shields.io/badge/Security-Local--First%20%7C%20Keyring--Protected-success?style=for-the-badge" alt="Security">
+  <img src="https://img.shields.io/badge/Code%20Style-Ruff-000000?style=for-the-badge" alt="Code Style">
   <img src="https://img.shields.io/badge/LLM--Context-llms.txt-blueviolet?style=for-the-badge" alt="LLM Context">
 </p>
 

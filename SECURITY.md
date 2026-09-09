@@ -29,10 +29,17 @@ Wenn Sie eine Sicherheitslücke oder ein kritisches Integritätsproblem in WinSt
    - Wählen Sie **Report a vulnerability** ([Direktlink](https://github.com/file-bricks/WinStorePackager/security/advisories/new))
    - Beschreiben Sie das Verhalten, Schritte zur Reproduktion und mögliche Auswirkungen
 2. **Direkter E-Mail-Kontakt:** Alternativ können Sie sich direkt an unsere Sicherheitskoordinatoren wenden:
+   - `security@open-bricks.org`
    - `security@file-bricks.org`
    - `security@ellmos.ai`
    - `support@lukasgeiger.com`
    - `lukas@open-bricks.org`
+
+### Reaktionszeiten & SLAs
+
+- **Erste Eingangsbestätigung:** Verbindlich innerhalb von 48 Stunden nach Eingang der Meldung.
+- **Erste Risikobewertung & Triage:** Innerhalb von 5 Werktagen.
+- **Sicherheits-Patch:** Nach Priorität und Kritikalität im schnellstmöglichen Turnus.
 
 Bitte öffnen Sie für Sicherheitslücken **keine öffentlichen Issues** und veröffentlichen Sie keine sensiblen Publisher-IDs, Zertifikate oder Pfade. Bestätigte Sicherheitsprobleme werden mit höchster Priorität behoben.
 
@@ -67,9 +74,16 @@ If you discover a security vulnerability or sensitive data exposure in WinStoreP
    - Click **Report a vulnerability** ([Direct Link](https://github.com/file-bricks/WinStorePackager/security/advisories/new))
    - Provide reproduction steps, affected environment, and potential impact
 2. **Direct Security Email:** Alternatively, email our security coordinators directly:
+   - `security@open-bricks.org`
    - `security@file-bricks.org`
    - `security@ellmos.ai`
    - `support@lukasgeiger.com`
    - `lukas@open-bricks.org`
+
+### Response SLAs & Vulnerability Handling
+
+- **Initial Acknowledgment:** Guaranteed within 48 hours of receipt.
+- **Triage & Risk Assessment:** Within 5 business days.
+- **Remediation & Patching:** Deployed with highest priority according to severity.
 
 Please **do not disclose vulnerabilities in public issues**. Confirmed security patches are prioritized and released promptly.
