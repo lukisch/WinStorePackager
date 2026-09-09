@@ -17,6 +17,22 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Store-Readiness & Metadaten-Härtung (2026-09-09)
+
+- **Microsoft Partner Center Metadaten (`store_package.json`):**
+  - Kanonische Publisher-DN `CN=52596601-BAB4-4F3F-B182-E8F3F273B202` (Lukas Geiger), `Geiger.WinStorePackager` Identity, Lizenz `MIT`, Store-ID `9NT273Z50BJR` und Sprachen `["de-DE", "en-US"]` hinterlegt.
+- **Store-Tile-Assets (`store_assets/`):**
+  - Fehlende Kachel `StoreLogo.png` (50x50 PNG) mit Lanczos-Resampling erzeugt; Kachelbestand (44x44, 50x50, 150x150, 310x150, 310x310) vollständig.
+- **Store-Listing Richtlinienkonformität (`STORE_LISTING.md`):**
+  - Microsoft Partner Center Policy 10.1.3 umgesetzt: Schlüsselwörter für Deutsch und Englisch auf exakt 7 markenrechtsfreie Einträge begrenzt.
+  - Support-E-Mail ergänzt, echte deutsche Umlaute normiert.
+- **Dokumentation:**
+  - `SUPPORT.md`: Zweisprachige Support- und Hilfeseite mit FAQ und Kontakt eingerichtet.
+  - `WINDOWS_STORE_PREP.md`: Vollständige Windows Store Checkliste und Identitätsübersicht erstellt.
+- **Automatisierte Qualitätsprüfung & Vertragstests:**
+  - `scripts/check_store_readiness.py`: Automatisierter Preflight-Prüfer für Paketmetadaten, Dokumente, Icons, Richtlinien-Keywords und URL-Erreichbarkeit.
+  - `tests/test_store_readiness.py`: 6 neue Pytest-Vertragstests verankert (138/138 Tests erfolgreich).
+
 ### Behoben / Fixed (2026-09-09)
 
 - **XML-Attribut-Escaping in Manifest-Erweiterungen (`WindowsStorePublisher_3.py`):**

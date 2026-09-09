@@ -1,14 +1,20 @@
 {
   "app_name": "WinStorePackager",
-  "publisher": "CN=YOUR-PUBLISHER-ID",
-  "publisher_display": "Your Publisher Name",
-  "identity_name": "YourPublisher.WinStorePackager",
+  "publisher": "CN=52596601-BAB4-4F3F-B182-E8F3F273B202",
+  "publisher_display": "Lukas Geiger",
+  "identity_name": "Geiger.WinStorePackager",
   "version": "3.1.0.0",
   "description": "Python-Apps für den Microsoft Store packen (MSIX). Manifest-Generierung, Icon-Builder, PyInstaller-Integration, Code-Signing, WACK-Tests.",
   "executable": "WinStorePackager.exe",
   "capabilities": "internetClient,runFullTrust",
   "category": "Developer Tools",
   "age_rating": "3+",
+  "license": "MIT",
   "privacy_url": "https://github.com/file-bricks/WinStorePackager/blob/master/PRIVACY_POLICY.md",
-  "support_url": "https://github.com/file-bricks/WinStorePackager/issues"
+  "support_url": "https://github.com/file-bricks/WinStorePackager/issues",
+  "languages": [
+    "de-DE",
+    "en-US"
+  ],
+  "store_id": "9NT273Z50BJR"
 }

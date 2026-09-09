@@ -32,10 +32,11 @@ Python-Entwickler, die ihre Desktop-Anwendungen im Microsoft Store veröffentlic
 **Support:**
 
 - GitHub Issues: https://github.com/file-bricks/WinStorePackager/issues
+- E-Mail: lukasgeiger@googlemail.com
 - Datenschutz und lokale Datenhaltung: https://github.com/file-bricks/WinStorePackager/blob/master/PRIVACY_POLICY.md
 
 ### Schlüsselwörter
-MSIX, Python, Packaging, Microsoft Store, App-Veröffentlichung, Manifest, Icon-Generator, Entwickler-Tool, Windows SDK, Store-Einreichung
+MSIX, Python, Desktop-App, Manifest, Icon-Generator, Entwickler-Tool, Paketierung
 
 ### Kategorie
 Developer Tools
@@ -74,10 +75,11 @@ Python developers who want to publish their desktop applications on the Microsof
 **Support:**
 
 - GitHub Issues: https://github.com/file-bricks/WinStorePackager/issues
+- Email: lukasgeiger@googlemail.com
 - Privacy and local-data boundary: https://github.com/file-bricks/WinStorePackager/blob/master/PRIVACY_POLICY.md
 
 ### Keywords
-MSIX, Python, packaging, Microsoft Store, app publishing, manifest, icon generator, developer tool, Windows SDK, Store submission
+MSIX, Python, Desktop App, Manifest, Icon Generator, Developer Tool, Packaging
 
 ### Category
 Developer Tools
