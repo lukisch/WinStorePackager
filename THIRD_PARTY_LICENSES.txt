@@ -1,11 +1,95 @@
 Pillow
-License: MIT-CMU (Historical Permission Notice and Disclaimer)
+License: HPND-sell-variant (Historical Permission Notice and Disclaimer)
+SPDX: HPND-sell-variant
 URL: https://pypi.org/project/Pillow/
+Notice: Asset-Generierung, Lanczos-Resampling von Store-Kacheln, PNG-Validierung (>=12.3.0 abgesichert gegen GHSA-4x4j-2g7c-83w6 und GHSA-45hq-cxwh-f6vc)
 
-pygetwindow
+PyGetWindow
 License: BSD-3-Clause
+SPDX: BSD-3-Clause
 URL: https://pypi.org/project/PyGetWindow/
+Notice: Ermittlung von Fensterkoordinaten für UI-Screenshot- und Store-Asset-Erfassung (>=0.0.9)
 
 keyring
 License: MIT
+SPDX: MIT
 URL: https://pypi.org/project/keyring/
+Notice: Sichere Verwaltung von Zertifikatspasswörtern im OS-Keyring (Windows Credential Manager, >=25.0.0)
+
+PyRect
+License: BSD-3-Clause
+SPDX: BSD-3-Clause
+URL: https://pypi.org/project/PyRect/
+Notice: 2D-Rechteck- und Geometrieberechnungen für PyGetWindow
+
+jaraco.classes
+License: MIT
+SPDX: MIT
+URL: https://pypi.org/project/jaraco.classes/
+Notice: Klassenmethoden- und Metaklassen-Hilfsfunktionen für keyring
+
+jaraco.context
+License: MIT
+SPDX: MIT
+URL: https://pypi.org/project/jaraco.context/
+Notice: Kontextmanager-Hilfsfunktionen für keyring
+
+jaraco.functools
+License: MIT
+SPDX: MIT
+URL: https://pypi.org/project/jaraco.functools/
+Notice: Funktionsdekoration und Caching für keyring
+
+pywin32-ctypes
+License: BSD-3-Clause
+SPDX: BSD-3-Clause
+URL: https://pypi.org/project/pywin32-ctypes/
+Notice: Ctypes-basierter Zugriff auf Windows Credential Vault ohne native C-Compiler
+
+PyInstaller
+License: GPL-2.0-or-later WITH Bootloader-exception
+SPDX: GPL-2.0-or-later WITH Bootloader-exception
+URL: https://www.pyinstaller.org/
+Notice: Erstellung eigenständiger Windows-Binärdateien unter PyInstaller Bootloader Special Exception
+
+pyinstaller-hooks-contrib
+License: Apache-2.0
+SPDX: Apache-2.0
+URL: https://github.com/pyinstaller/pyinstaller-hooks-contrib
+Notice: Paketierungs-Hooks für Drittanbieter-Bibliotheken
+
+altgraph
+License: MIT
+SPDX: MIT
+URL: https://pypi.org/project/altgraph/
+Notice: Statische Abhängigkeits-Graph-Analyse während des PyInstaller-Builds
+
+packaging
+License: Apache-2.0 OR BSD-2-Clause
+SPDX: Apache-2.0 OR BSD-2-Clause
+URL: https://pypi.org/project/packaging/
+Notice: PEP 440/508 Versionsparsing und Spezifikationsvalidierung
+
+pytest
+License: MIT
+SPDX: MIT
+URL: https://pytest.org/
+Notice: Testframework (>=9.1.1 abgesichert gegen CVE-2025-7117 / GHSA-6w46-j5rx-g56g)
+
+pluggy
+License: MIT
+SPDX: MIT
+URL: https://pypi.org/project/pluggy/
+Notice: Plugin- und Hook-Management für pytest
+
+iniconfig
+License: MIT
+SPDX: MIT
+URL: https://pypi.org/project/iniconfig/
+Notice: Schneller INI-Parser für pyproject.toml und pytest.ini Konfigurationen
+
+ruff
+License: MIT OR Apache-2.0
+SPDX: MIT OR Apache-2.0
+URL: https://github.com/astral-sh/ruff
+Notice: Statische Code-Analyse, Linting und Stilprüfungen (>=0.9.0)

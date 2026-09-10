@@ -17,6 +17,21 @@ Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.1.0/).
 
 ## [Unreleased]
 
+### Security- & Lizenz-Härtung (2026-09-10)
+
+- **Abhängigkeiten & Vulnerability-Floors (`requirements.txt`, `pyproject.toml`):**
+  - `Pillow>=12.3.0` als verbindliche Untergrenze verankert (behebt 26+ bekannte Sicherheitslücken <=12.2.0, darunter OS Command Injection GHSA-4x4j-2g7c-83w6 und Decompression-Bomb-Bypass GHSA-45hq-cxwh-f6vc).
+  - `keyring>=25.0.0` und `pygetwindow>=0.0.9` gehärtet.
+  - PEP 621 `dependencies` und `optional-dependencies` (mit `pytest>=9.1.1` gegen CVE-2025-7117 / GHSA-6w46-j5rx-g56g sowie `ruff>=0.9.0`) in `pyproject.toml` spezifiziert.
+- **Drittanbieter-Lizenzkatalog (`THIRD_PARTY_LICENSES.txt`):**
+  - Vollständiges Lizenzinventar mit SPDX-Identifikatoren und Upstream-URLs für direkte und transitive Laufzeitpakete (`Pillow`, `PyGetWindow`, `PyRect`, `keyring`, `jaraco.*`, `pywin32-ctypes`), Build-/Packaging-Tools (`PyInstaller` inkl. Bootloader Exception, `pyinstaller-hooks-contrib`, `altgraph`, `packaging`) und Dev/Test-Tools (`pytest`, `pluggy`, `iniconfig`, `ruff`) aufgebaut.
+- **Sync- & Gitignore-Härtung (`.gitignore`):**
+  - Multi-Host-Synchronisationsmuster `*-WORKSTATION-LG*` und `*-ASUS-GEI*` gegen versehentliches Committen von OneDrive-Konfliktkopien integriert.
+- **Privacy & Pfadbereinigung (`tests/test_dogfood_real_apps.py`):**
+  - Hardcodierte Entwicklerpfade (`C:\Users\lukas`) durch dynamische `Path.home()`-Auflösung ersetzt.
+- **Automatisierte Sicherheits-Vertragstests (`tests/test_security_license_contract.py`):**
+  - 6 neue Pytest-Vertragstests für Vulnerability-Floors, Lizenzbestand, Gitignore-Schutz, pfadunabhängige Quellcodedateien, gefahrlose Subprocess-Aufrufe (`shell=False`) und 48h-Sicherheits-SLA implementiert (144/144 Tests erfolgreich).
+
 ### Store-Readiness & Metadaten-Härtung (2026-09-09)
 
 - **Microsoft Partner Center Metadaten (`store_package.json`):**

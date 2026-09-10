@@ -105,6 +105,8 @@ DONE.md
 *.conflict
 *-CONFLIT-*
 *-conflict-*
+*-WORKSTATION-LG*
+*-ASUS-GEI*
 
 # ---- Multi-Agent Locks & Lock-System ----
 LOCK.*

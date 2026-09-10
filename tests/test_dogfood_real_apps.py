@@ -37,6 +37,9 @@ NS = {
     "rescap": "http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities",
 }
 
+# Local repository and OneDrive mirror bases
+ONEDRIVE_SOFTWARE = Path.home() / "OneDrive" / ".TOPICS" / ".SOFTWARE"
+
 # Authoritative reference metadata for live submitted apps
 LIVE_APPS_SPEC = {
     "MethodenAnalyser": {
@@ -53,7 +56,7 @@ LIVE_APPS_SPEC = {
         "age_rating": "3+",
         "local_paths": [
             Path(r"C:\_Local_DEV\repos\MethodenAnalyser"),
-            Path(r"C:\Users\lukas\OneDrive\.TOPICS\.SOFTWARE\CODING\REL-PUB_MethodenAnalyser"),
+            ONEDRIVE_SOFTWARE / "CODING" / "REL-PUB_MethodenAnalyser",
         ],
     },
     "SQLiteViewer": {
@@ -70,7 +73,7 @@ LIVE_APPS_SPEC = {
         "age_rating": "3+",
         "local_paths": [
             Path(r"C:\_Local_DEV\repos\SQLiteViewer"),
-            Path(r"C:\Users\lukas\OneDrive\.TOPICS\.SOFTWARE\DATA\REL-PUB_SQLiteViewer"),
+            ONEDRIVE_SOFTWARE / "DATA" / "REL-PUB_SQLiteViewer",
         ],
     },
     "CleanMarkdown": {
@@ -87,7 +90,7 @@ LIVE_APPS_SPEC = {
         "age_rating": "3+",
         "local_paths": [
             Path(r"C:\_Local_DEV\repos\CleanMarkdown"),
-            Path(r"C:\Users\lukas\OneDrive\.TOPICS\.SOFTWARE\DOCS\DEV_CleanMarkdown"),
+            ONEDRIVE_SOFTWARE / "DOCS" / "DEV_CleanMarkdown",
         ],
     },
     "PromptBoard": {
@@ -103,7 +106,8 @@ LIVE_APPS_SPEC = {
         "category": "Productivity",
         "age_rating": "3+",
         "local_paths": [
-            Path(r"C:\Users\lukas\OneDrive\.TOPICS\.SOFTWARE\DATA\REL-PUB_PromptBoard"),
+            Path(r"C:\_Local_DEV\repos\PromptBoard"),
+            ONEDRIVE_SOFTWARE / "DATA" / "REL-PUB_PromptBoard",
         ],
     },
 }
